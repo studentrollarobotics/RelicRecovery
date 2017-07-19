@@ -8,11 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
  */
 
 public class MyTestCodeTelemetry extends MyTestCodeHardware{
-
-
-
     public void Telemetry() {
-
         telemetry.addData("Right Motor Power", RightPower);
         telemetry.addData("Left Motor Power", LeftPower);
         telemetry.addData("Lift Motor Power", LiftPower);

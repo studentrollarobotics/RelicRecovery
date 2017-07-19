@@ -10,15 +10,16 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  * Created by lsatt on 7/18/2017.
  */
 
-public class MyTestCode extends OpMode{
+public class MyTestCodeHardware extends OpMode {
 
     DcMotor RightMotor;
     DcMotor LeftMotor;
     DcMotor LiftMotor;
+    DcMotor ArmMotor;
     double RightPower;
     double LeftPower;
     double LiftPower;
-
+    double ArmPower;
 
 
     @Override
@@ -26,27 +27,26 @@ public class MyTestCode extends OpMode{
         RightMotor = hardwareMap.dcMotor.get("rm");
         LeftMotor = hardwareMap.dcMotor.get("lm");
         LiftMotor = hardwareMap.dcMotor.get("lift");
+        ArmMotor = hardwareMap.dcMotor.get("Arm");
+
         RightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         LiftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        ArmMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     @Override
     public void loop() {
-    RightPower = gamepad1.right_stick_y;
-    LeftPower = gamepad1.left_stick_y;
+       
 
-    RightMotor.setPower(RightPower);
-    LeftMotor.setPower(LeftPower);
-
-
-    if (gamepad1.right_bumper){
-            LiftPower = 1;
-        }
-    else if (gamepad1.left_bumper){
-          LiftPower = -1;
     }
-    else
-          LiftPower = 0;
 
+    protected void Telemetry() {
+
+        telemetry.addData("Right Motor Power", RightPower);
+        telemetry.addData("Left Motor Power", LeftPower);
+        telemetry.addData("Lift Motor Power", LiftPower);
+        telemetry.addData("Arm Motor Power", ArmPower);
     }
 }
+
+
